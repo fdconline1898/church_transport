@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.header {
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+.section {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.table th {
+    background: #eee;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.status.scheduled { color: #2980b9; }
+.status.confirmed { color: #27ae60; }
+.status.in_progress { color: #f39c12; }
+.status.completed { color: #2ecc71; }
+.status.cancelled { color: #c0392b; }
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+.button {
+    background: #2980b9;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.button.secondary {
+    background: #7f8c8d;
+}
+
+.form {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.form label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+.form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+.checkbox {
+    margin-top: 15px;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Driver Route – Today</title>
+    <link rel="stylesheet" href="/static/transportation/styles.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>Driver Route – Today</h1>
+</header>
+
+{% if trips_today %}
+    {% for trip in trips_today %}
+    <section class="section">
+        <h2>{{ trip.service_time }} – {{ trip.date }}</h2>
+        <p><strong>Driver:</strong> {{ trip.driver.full_name }}</p>
+
+        <table class="table">
+            <tr>
+                <th>Rider</th>
+                <th>Address</th>
+                <th>Pickup Time</th>
+                <th>Dropoff Time</th>
+                <th>Pickup Status</th>
+                <th>Dropoff Status</th>
+            </tr>
+
+            {% for tr in trip.trip_riders.all %}
+            <tr>
+                <td>{{ tr.rider.full_name }}</td>
+                <td>{{ tr.rider.address_line1 }}, {{ tr.rider.city }}</td>
+                <td>{{ tr.pickup_time }}</td>
+                <td>{{ tr.dropoff_time }}</td>
+                <td class="status {{ tr.pickup_status }}">{{ tr.pickup_status|title }}</td>
+                <td class="status {{ tr.dropoff_status }}">{{ tr.dropoff_status|title }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+    {% endfor %}
+{% else %}
+    <p>No trips scheduled for today.</p>
+{% endif %}
+
+</body>
+</html>

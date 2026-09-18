@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coordinator Dashboard</title>
+    <link rel="stylesheet" href="/static/transportation/styles.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>Transportation Ministry – Coordinator Dashboard</h1>
+</header>
+
+<section class="section">
+    <h2>Upcoming Trips</h2>
+
+    {% if upcoming_trips %}
+    <table class="table">
+        <tr>
+            <th>Date</th>
+            <th>Service Time</th>
+            <th>Driver</th>
+            <th>Status</th>
+            <th>Riders</th>
+        </tr>
+
+        {% for trip in upcoming_trips %}
+        <tr>
+            <td>{{ trip.date }}</td>
+            <td>{{ trip.service_time }}</td>
+            <td>{{ trip.driver.full_name }}</td>
+            <td class="status {{ trip.status }}">{{ trip.status|title }}</td>
+            <td>
+                {% for tr in trip.trip_riders.all %}
+                    <div>{{ tr.rider.full_name }}</div>
+                {% empty %}
+                    <em>No riders assigned</em>
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>No upcoming trips scheduled.</p>
+    {% endif %}
+</section>
+
+<section class="section">
+    <h2>Unassigned Recurring Riders</h2>
+
+    {% if unassigned_riders %}
+    <ul class="list">
+        {% for rider in unassigned_riders %}
+        <li>
+            <strong>{{ rider.full_name }}</strong>  
+            – {{ rider.city }}  
+            – {{ rider.preferred_service_time }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>All recurring riders are assigned.</p>
+    {% endif %}
+</section>
+
+<div class="actions">
+    <a class="button" href="{% url 'rider_request' %}">Add New Rider Request</a>
+    <a class="button secondary" href="/admin/">Admin Panel</a>
+</div>
+
+</body>
+</html>
